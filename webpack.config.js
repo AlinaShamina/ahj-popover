@@ -5,8 +5,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
+    path: path.resolve(__dirname, ''), 
+    clean: false, 
   },
   devServer: {
     port: 9000,
@@ -22,7 +22,7 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.js$/,
+        test: /\.js$/i,
         exclude: /node_modules/,
         use: { loader: 'babel-loader', options: { presets: ['@babel/preset-env'] } },
       },
@@ -31,6 +31,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      filename: 'index.html', 
     }),
   ],
 };
