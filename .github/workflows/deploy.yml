@@ -27,10 +27,13 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Copy build to root
+        run: cp -r dist/* ./
+
       - name: Upload artifact for Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist   
+          path: ./   
 
   deploy:
     needs: build
@@ -40,3 +43,4 @@ jobs:
         uses: actions/deploy-pages@v3
         with:
           token: ${{ secrets.GH_PAGES_TOKEN }}
+
