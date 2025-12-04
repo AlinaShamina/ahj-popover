@@ -1,15 +1,14 @@
 /**
  * @jest-environment jsdom
  */
-
 import Popover from '../src/popover';
 
 describe('Popover widget', () => {
-  test('popover appears and disappears on click', () => {
-    document.body.innerHTML = `<button id="b">btn</button>`;
-    const btn = document.getElementById('b');
+  test('popover toggles', () => {
+    document.body.innerHTML = `<button id="btn">button</button>`;
+    const btn = document.getElementById('btn');
 
-    const pop = new Popover(btn, 'Title', 'Text');
+    new Popover(btn, 'Title', 'Text');
 
     btn.click();
     expect(document.querySelector('.popover')).not.toBeNull();
